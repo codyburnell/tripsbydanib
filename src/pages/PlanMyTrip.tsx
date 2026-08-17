@@ -8,7 +8,7 @@ export default function PlanMyTrip() {
   return (
     <>
       <Header />
-      <main className="section">
+      <main className="section" style={{ paddingTop: 160 }}>
         <div className="container">
           <p className="eyebrow">Your Trip Starts Here</p>
           <h1>Tell Dani about your trip.</h1>

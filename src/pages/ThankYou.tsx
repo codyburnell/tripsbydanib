@@ -5,7 +5,7 @@ export default function ThankYou() {
   return (
     <>
       <Header />
-      <main className="section">
+      <main className="section" style={{ paddingTop: 160 }}>
         <div className="container">
           <p className="eyebrow">You’re In</p>
           <h1>Dani has your trip details.</h1>

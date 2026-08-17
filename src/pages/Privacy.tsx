@@ -5,7 +5,7 @@ export default function Privacy() {
   return (
     <>
       <Header />
-      <main className="section">
+      <main className="section" style={{ paddingTop: 160 }}>
         <div className="container">
           <h1>Privacy</h1>
           <p>
