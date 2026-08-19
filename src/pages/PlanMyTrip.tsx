@@ -1,32 +1,50 @@
+import { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { site } from "../config/site";
 
 export default function PlanMyTrip() {
-  const isConfigured = site.ghlSurveyUrl !== "#";
+  useEffect(() => {
+    const scriptId = "ghl-form-embed-script";
+    if (!document.getElementById(scriptId)) {
+      const script = document.createElement("script");
+      script.src = "https://link.msgsndr.com/js/form_embed.js";
+      script.id = scriptId;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
 
   return (
     <>
       <Header />
       <main className="section" style={{ paddingTop: 160 }}>
-        <div className="container">
+        <div className="container" style={{ maxWidth: 900 }}>
           <p className="eyebrow">Your Trip Starts Here</p>
-          <h1>Tell Dani about your trip.</h1>
-          <p>
-            You don’t need to have everything figured out. That’s the point.
-            Share what you know, what you love, and what you want help with.
+          <h1>Tell Detail Dani About Your Trip.</h1>
+          <p style={{ maxWidth: 680, lineHeight: 1.8, marginBottom: 48 }}>
+            You don't need to have everything figured out. That's the point.
+            Tell me where you're dreaming about going, who's coming, how you
+            like to travel, where you want to stay, whether you're more street
+            food or room service, and all the little details that make a trip
+            feel like <em>your</em> trip. The more I know, the better I can plan.
           </p>
 
-          {isConfigured ? (
-            <a className="btn btn-primary" href={site.ghlSurveyUrl}>
-              Start the Trip Questionnaire
-            </a>
-          ) : (
-            <div className="card">
-              <strong>GoHighLevel survey not configured yet.</strong>
-              <p>Add your public GHL survey URL to <code>.env</code> as <code>VITE_GHL_SURVEY_URL</code>.</p>
-            </div>
-          )}
+          <div
+            style={{
+              background: "var(--shell)",
+              borderRadius: "var(--radius-md)",
+              padding: "32px 24px",
+              boxShadow: "var(--shadow)",
+            }}
+          >
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/survey/be5seUbfqQtYIUoEaBwC"
+              style={{ border: "none", width: "100%" }}
+              scrolling="no"
+              id="be5seUbfqQtYIUoEaBwC"
+              title="Trips by DaniB Trip Planning Survey"
+            />
+          </div>
         </div>
       </main>
       <Footer />
