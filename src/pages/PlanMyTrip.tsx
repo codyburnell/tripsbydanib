@@ -35,6 +35,35 @@ export default function PlanMyTrip() {
           <path d="M30 75 L30 5" fill="none" stroke="#6F7C67" strokeWidth="0.6" opacity="0.1" />
         </svg>
 
+        {/* Palm shadow silhouette */}
+        <svg className="survey-deco-palm" viewBox="0 0 400 500" aria-hidden="true">
+          <path d="M200 480 C200 480 195 400 200 320 C205 240 210 200 200 160" fill="none" stroke="#2E2A26" strokeWidth="3" strokeLinecap="round" />
+          <path d="M200 180 C180 140 120 100 60 90 C120 85 170 110 200 160" fill="#2E2A26" />
+          <path d="M200 170 C220 120 280 70 350 50 C290 75 230 115 200 160" fill="#2E2A26" />
+          <path d="M200 190 C160 160 100 160 40 180 C100 155 155 160 200 180" fill="#2E2A26" />
+          <path d="M200 185 C240 155 310 150 370 165 C310 148 250 155 200 178" fill="#2E2A26" />
+          <path d="M200 200 C175 175 130 185 80 220 C130 185 170 180 200 195" fill="#2E2A26" />
+          <path d="M200 195 C230 170 290 175 340 200 C285 172 235 172 200 190" fill="#2E2A26" />
+        </svg>
+
+        {/* Organic coastline contour */}
+        <svg className="survey-deco-contour" viewBox="0 0 500 200" aria-hidden="true">
+          <path
+            d="M-20 120 C30 100 80 130 140 115 C200 100 240 80 300 95 C360 110 400 90 450 105 C500 120 540 100 580 110"
+            fill="none"
+            stroke="#174B4F"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+          <path
+            d="M-10 145 C50 130 100 155 160 140 C220 125 260 110 320 125 C380 140 420 120 470 135 C520 150 560 130 600 140"
+            fill="none"
+            stroke="#174B4F"
+            strokeWidth="0.8"
+            strokeLinecap="round"
+          />
+        </svg>
+
         <div className="survey-page-intro">
           <p className="eyebrow">Your Trip Starts Here</p>
           <h1 className="survey-headline">
