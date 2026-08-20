@@ -1,9 +1,9 @@
 import { useRef, useEffect } from "react";
 
 const ZONES = [
-  { id: "horizon", min: 0, max: 38 },
-  { id: "first-wave", min: 38, max: 68 },
-  { id: "foam", min: 68, max: 100 },
+  { id: "third-wave", min: 0, max: 42 },
+  { id: "second-wave", min: 42, max: 64 },
+  { id: "foam", min: 64, max: 100 },
 ] as const;
 
 export default function WaveShimmer() {
@@ -59,7 +59,7 @@ export default function WaveShimmer() {
       for (let i = 0; i < 3; i++) {
         const layer = layersRef.current[i];
         if (layer) {
-          layer.style.opacity = active === i ? "0.8" : "0";
+          layer.style.opacity = active === i ? "0.85" : "0";
         }
       }
 

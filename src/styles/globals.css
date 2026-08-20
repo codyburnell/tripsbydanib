@@ -117,30 +117,34 @@ a { color: inherit; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(1.35) saturate(1.2) contrast(1.05);
+  filter: brightness(1.4) saturate(1.15) contrast(1.05);
   user-select: none;
 }
 
-/* Horizon mask — turquoise open water band, curves gently from left to right */
-.wave-glow-horizon {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='h' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='black' stop-opacity='0'/%3E%3Cstop offset='.3' stop-color='black' stop-opacity='1'/%3E%3Cstop offset='.7' stop-color='black' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='black' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 30 C15 32 30 29 50 31 C70 33 85 30 100 32 L100 46 C85 44 70 47 50 45 C30 43 15 46 0 44 Z' fill='url(%23h)'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='h' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='black' stop-opacity='0'/%3E%3Cstop offset='.3' stop-color='black' stop-opacity='1'/%3E%3Cstop offset='.7' stop-color='black' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='black' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 30 C15 32 30 29 50 31 C70 33 85 30 100 32 L100 46 C85 44 70 47 50 45 C30 43 15 46 0 44 Z' fill='url(%23h)'/%3E%3C/svg%3E");
+/* Third wave — far horizon wave band (BLACK trace in reference)
+   Thin undulating band following the distant wave line at ~46-53% */
+.wave-glow-third-wave {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,460 C40,455 80,450 120,448 C180,445 240,447 300,450 C360,453 420,448 480,446 C540,444 600,447 660,450 C720,453 780,449 840,447 C900,445 950,448 1000,450 L1000,530 C950,533 900,536 840,534 C780,532 720,535 660,537 C600,535 540,532 480,534 C420,536 360,538 300,536 C240,534 180,537 120,535 C80,533 40,536 0,538 Z' fill='white'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,460 C40,455 80,450 120,448 C180,445 240,447 300,450 C360,453 420,448 480,446 C540,444 600,447 660,450 C720,453 780,449 840,447 C900,445 950,448 1000,450 L1000,530 C950,533 900,536 840,534 C780,532 720,535 660,537 C600,535 540,532 480,534 C420,536 360,538 300,536 C240,534 180,537 120,535 C80,533 40,536 0,538 Z' fill='white'/%3E%3C/svg%3E");
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 }
 
-/* First-wave mask — mid-distance water with gentle ripple curves */
-.wave-glow-first-wave {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='f' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='black' stop-opacity='0'/%3E%3Cstop offset='.25' stop-color='black' stop-opacity='1'/%3E%3Cstop offset='.75' stop-color='black' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='black' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 44 C10 46 25 43 40 45 C55 47 70 44 85 46 C92 47 96 45 100 46 L100 63 C96 62 92 64 85 63 C70 61 55 64 40 62 C25 60 10 63 0 61 Z' fill='url(%23f)'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='f' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='black' stop-opacity='0'/%3E%3Cstop offset='.25' stop-color='black' stop-opacity='1'/%3E%3Cstop offset='.75' stop-color='black' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='black' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 44 C10 46 25 43 40 45 C55 47 70 44 85 46 C92 47 96 45 100 46 L100 63 C96 62 92 64 85 63 C70 61 55 64 40 62 C25 60 10 63 0 61 Z' fill='url(%23f)'/%3E%3C/svg%3E");
+/* Second wave — mid-distance breaking wave (YELLOW trace in reference)
+   Curves from upper-left to lower-right following mid-ocean wave lines at ~53-68% */
+.wave-glow-second-wave {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,535 C30,540 70,545 120,550 C180,557 240,563 300,570 C360,577 420,583 480,590 C540,597 600,604 660,610 C720,616 780,621 840,626 C900,630 950,633 1000,636 L1000,685 C950,683 900,680 840,676 C780,672 720,667 660,662 C600,657 540,651 480,644 C420,637 360,631 300,624 C240,618 180,612 120,607 C70,602 30,598 0,594 Z' fill='white'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,535 C30,540 70,545 120,550 C180,557 240,563 300,570 C360,577 420,583 480,590 C540,597 600,604 660,610 C720,616 780,621 840,626 C900,630 950,633 1000,636 L1000,685 C950,683 900,680 840,676 C780,672 720,667 660,662 C600,657 540,651 480,644 C420,637 360,631 300,624 C240,618 180,612 120,607 C70,602 30,598 0,594 Z' fill='white'/%3E%3C/svg%3E");
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 }
 
-/* Foam mask — shore break curve, sweeps from lower-left toward center-right */
+/* Foam — foreground shore break (RED trace in reference)
+   Large irregular foam shape curving from lower-left upward to upper-right,
+   following the actual branching foam edge visible in hero-beach.webp */
 .wave-glow-foam {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='fm' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='black' stop-opacity='0'/%3E%3Cstop offset='.2' stop-color='black' stop-opacity='1'/%3E%3Cstop offset='.8' stop-color='black' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='black' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 72 C8 70 18 66 30 64 C45 61 55 63 65 65 C78 68 88 64 100 62 L100 82 C90 83 78 85 65 83 C52 81 40 84 28 82 C15 80 8 83 0 82 Z' fill='url(%23fm)'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='fm' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='black' stop-opacity='0'/%3E%3Cstop offset='.2' stop-color='black' stop-opacity='1'/%3E%3Cstop offset='.8' stop-color='black' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='black' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 72 C8 70 18 66 30 64 C45 61 55 63 65 65 C78 68 88 64 100 62 L100 82 C90 83 78 85 65 83 C52 81 40 84 28 82 C15 80 8 83 0 82 Z' fill='url(%23fm)'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,810 C15,805 30,798 50,792 C70,786 90,779 115,773 C140,767 160,761 185,755 C210,749 230,744 255,738 C280,732 300,727 325,722 C350,717 370,713 395,709 C420,705 445,701 470,698 C500,694 525,691 550,688 C580,685 610,683 640,680 C670,677 700,675 730,673 C760,671 790,670 820,668 C850,666 880,665 910,664 C940,663 960,662 980,661 L1000,660 L1000,900 C980,902 960,903 940,902 C910,901 880,903 850,905 C820,904 790,902 760,904 C730,906 700,905 670,903 C640,905 610,907 580,906 C550,904 525,906 500,908 C470,907 445,905 420,907 C395,909 370,908 350,906 C325,905 300,907 280,909 C255,908 230,906 210,908 C185,910 160,909 140,907 C115,906 90,908 70,910 C50,909 30,907 15,908 L0,907 Z' fill='white'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='none'%3E%3Cpath d='M0,810 C15,805 30,798 50,792 C70,786 90,779 115,773 C140,767 160,761 185,755 C210,749 230,744 255,738 C280,732 300,727 325,722 C350,717 370,713 395,709 C420,705 445,701 470,698 C500,694 525,691 550,688 C580,685 610,683 640,680 C670,677 700,675 730,673 C760,671 790,670 820,668 C850,666 880,665 910,664 C940,663 960,662 980,661 L1000,660 L1000,900 C980,902 960,903 940,902 C910,901 880,903 850,905 C820,904 790,902 760,904 C730,906 700,905 670,903 C640,905 610,907 580,906 C550,904 525,906 500,908 C470,907 445,905 420,907 C395,909 370,908 350,906 C325,905 300,907 280,909 C255,908 230,906 210,908 C185,910 160,909 140,907 C115,906 90,908 70,910 C50,909 30,907 15,908 L0,907 Z' fill='white'/%3E%3C/svg%3E");
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 }
