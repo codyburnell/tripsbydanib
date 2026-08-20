@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import InteractiveTravelPaths from "./InteractiveTravelPaths";
 
 export default function Hero() {
   return (
@@ -11,6 +12,7 @@ export default function Hero() {
           height="900"
         />
       </div>
+      <InteractiveTravelPaths />
       <div className="container hero-copy">
         <p className="eyebrow">Personal Travel Planning · Worldwide + Costa Rica</p>
         <h1>You dream about the trip. DaniB obsesses over the details.</h1>
