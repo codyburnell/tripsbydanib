@@ -1,33 +1,26 @@
 import { useRef, useEffect } from "react";
 
 export default function WaveShimmer() {
-  const overlayRef = useRef<HTMLDivElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
   const animRef = useRef<number>(0);
   const mouseRef = useRef({ x: -9999, y: -9999 });
-  const currentRef = useRef({ x: 0.5, y: 0.7 });
+  const curRef = useRef({ x: 50, y: 60 });
+  const opacityRef = useRef(0);
   const isVisibleRef = useRef(true);
-  const reducedMotionRef = useRef(false);
-  const isTouchRef = useRef(false);
-  const mobilePhaseRef = useRef(0);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    reducedMotionRef.current = mq.matches;
-    const onMqChange = (e: MediaQueryListEvent) => {
-      reducedMotionRef.current = e.matches;
-    };
-    mq.addEventListener("change", onMqChange);
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const noHover = window.matchMedia("(hover: none)");
 
-    isTouchRef.current = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    if (prefersReduced.matches || noHover.matches) return;
 
     const onPointerMove = (e: PointerEvent) => {
-      if (reducedMotionRef.current || isTouchRef.current) return;
-      const el = overlayRef.current;
+      const el = wrapRef.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
-      if (x >= 0 && y >= 0 && x <= 1 && y <= 1) {
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      if (x >= 0 && y >= 0 && x <= 100 && y <= 100) {
         mouseRef.current = { x, y };
       } else {
         mouseRef.current = { x: -9999, y: -9999 };
@@ -38,58 +31,33 @@ export default function WaveShimmer() {
 
     const observer = new IntersectionObserver(
       ([entry]) => { isVisibleRef.current = entry.isIntersecting; },
-      { threshold: 0.1 }
+      { threshold: 0.05 }
     );
-    if (overlayRef.current) observer.observe(overlayRef.current);
+    if (wrapRef.current) observer.observe(wrapRef.current);
 
     const loop = () => {
-      if (reducedMotionRef.current) {
-        animRef.current = requestAnimationFrame(loop);
-        return;
-      }
-
-      const el = overlayRef.current;
+      const el = wrapRef.current;
       if (!el || !isVisibleRef.current) {
         animRef.current = requestAnimationFrame(loop);
         return;
       }
 
-      const cur = currentRef.current;
-      let targetX: number;
-      let targetY: number;
-      let intensity: number;
+      const cur = curRef.current;
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y;
+      const inside = mx > -100;
 
-      if (isTouchRef.current) {
-        mobilePhaseRef.current += 0.003;
-        targetX = 0.55 + Math.sin(mobilePhaseRef.current) * 0.15;
-        targetY = 0.6 + Math.cos(mobilePhaseRef.current * 0.7) * 0.1;
-        intensity = 0.12 + Math.sin(mobilePhaseRef.current * 1.3) * 0.04;
-      } else {
-        const mx = mouseRef.current.x;
-        const my = mouseRef.current.y;
-        if (mx < -100) {
-          targetX = cur.x;
-          targetY = cur.y;
-          intensity = 0;
-        } else {
-          targetX = mx;
-          targetY = my;
-          const waterStrength = Math.max(0, Math.min(1,
-            (my - 0.2) / 0.6 * (mx > 0.15 ? 1 : 0.3)
-          ));
-          intensity = waterStrength * 0.38;
-        }
+      const targetOpacity = inside ? 0.75 : 0;
+      opacityRef.current += (targetOpacity - opacityRef.current) * 0.07;
+
+      if (inside) {
+        cur.x += (mx - cur.x) * 0.1;
+        cur.y += (my - cur.y) * 0.1;
       }
 
-      cur.x += (targetX - cur.x) * 0.08;
-      cur.y += (targetY - cur.y) * 0.08;
-
-      const pxX = (cur.x * 100).toFixed(1);
-      const pxY = (cur.y * 100).toFixed(1);
-
-      el.style.setProperty("--wx", `${pxX}%`);
-      el.style.setProperty("--wy", `${pxY}%`);
-      el.style.setProperty("--wi", String(intensity.toFixed(3)));
+      el.style.setProperty("--gx", `${cur.x.toFixed(1)}%`);
+      el.style.setProperty("--gy", `${cur.y.toFixed(1)}%`);
+      el.style.opacity = opacityRef.current.toFixed(3);
 
       animRef.current = requestAnimationFrame(loop);
     };
@@ -100,15 +68,16 @@ export default function WaveShimmer() {
       cancelAnimationFrame(animRef.current);
       document.removeEventListener("pointermove", onPointerMove);
       observer.disconnect();
-      mq.removeEventListener("change", onMqChange);
     };
   }, []);
 
   return (
-    <div
-      ref={overlayRef}
-      className="wave-shimmer"
-      aria-hidden="true"
-    />
+    <div ref={wrapRef} className="wave-glow" aria-hidden="true" style={{ opacity: 0 }}>
+      <img
+        src="/images/hero-beach.webp"
+        alt=""
+        draggable={false}
+      />
+    </div>
   );
 }
