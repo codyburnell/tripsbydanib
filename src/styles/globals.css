@@ -445,6 +445,16 @@ a { color: inherit; }
   color: var(--ocean);
 }
 
+.site-nav .btn-primary {
+  background: #174B4F;
+  color: #FFFDF8;
+}
+
+.site-nav .btn-primary:hover {
+  background: #1D5B60;
+  color: #FFFDF8;
+}
+
 .nav-toggle {
   display: none;
   background: none;
