@@ -32,8 +32,8 @@ export default function PlanMyTrip() {
           <div
             style={{
               background: "var(--shell)",
-              borderRadius: "var(--radius-md)",
-              padding: "32px 24px",
+              borderRadius: "var(--radius-lg)",
+              padding: "40px 32px",
               boxShadow: "var(--shadow)",
             }}
           >

@@ -1,9 +1,9 @@
 export default function HowItWorks() {
   const steps = [
-    ["1", "Tell Dani about the trip", "Share what you know—destinations, dates, travel style, budget, must-haves."],
-    ["2", "Choose your level of help", "Done With You for focused recommendations or Done For You for the full research lift."],
-    ["3", "Dani gets into the details", "Research, reviews, routes, stays, transportation, and experiences—curated around you."],
-    ["4", "Go enjoy the trip", "You get an organized trip plan. All that's left is looking forward to it."]
+    ["01", "Tell Dani about the trip", "Share what you know—destinations, dates, travel style, budget, must-haves."],
+    ["02", "Choose your level of help", "Done With You for focused recommendations or Done For You for the full research lift."],
+    ["03", "Dani gets into the details", "Research, reviews, routes, stays, transportation, and experiences—curated around you."],
+    ["04", "Go enjoy the trip", "You get an organized trip plan. All that's left is looking forward to it."]
   ];
 
   return (
